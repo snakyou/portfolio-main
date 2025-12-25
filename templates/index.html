@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>Портфолио</title>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="header__nav main-nav">
+        <ul class="main-nav__list main-list">
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#home">ДОМ</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#about">ОБО МНЕ</a>
+          </li>
+          <li class="main-list__item list-item">
+            <a class="list-item__link" href="#skills">МОИ НАВЫКИ</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <!-- Секция превью -->
+      <section class="main__home home" id="home">
+        <h1 class="home__title">Сагадаров Денис Георгиевич</h1>
+        <p class="home__subtitle">ВЕБ-РАЗРАБОТЧИЙ, ПРОГРАММИСТ НА PYTHON</p>
+      </section>
+      <!-- Секция с рассказом о себе -->
+      <section class="main__about about" id="about">
+        <h2 class="about__title">ОБО МНЕ</h2>
+        <div class="about__info info-block">
+          <p class="info-block__text">
+            Привет! Я веб-разработчик, программист на Python и дизайнер, 
+            находящийся на пути становления как fullstack-специалист. 
+            Моя страсть — создавать целостные digital-продукты:
+            от концепции и дизайна интерфейсов до их функциональной реализации. 
+            Я разрабатываю адаптивные сайты на HTML/CSS и JavaScript, 
+            пишу скрипты и приложения на Python и стремлюсь к тому, 
+            чтобы каждый проект был не только технически грамотным, 
+            но и визуально привлекательным, 
+            удобным для пользователя. Для углубления своих знаний я активно изучаю backend-фреймворки Python (Django/Flask), 
+            современные frontend-библиотеки (React) и осваиваю работу с SQL-базами данных 
+            (PostgreSQL, SQLite) для управления сложными данными и построения полноценной серверной логики. 
+            Здесь вы найдёте мои проекты — от вёрстки и UI-макетов до консольных утилит на Python и учебных баз данных. 
+            Я осознаю, что мне ещё многому предстоит научиться, 
+            и с огромным энтузиазмом ищу новые вызовы, возможности для сотрудничества и проекты, 
+            где смогу принести пользу и расти как специалист.
+          </p>
+          <img
+            class="info-block__img"
+            src="../static/img/profile.png"
+            alt="me"
+            width="250"
+            height="250"
+          />
+        </div>
+      </section>
+      <!-- Секция со скиллами -->
+<!-- Секция со скиллами -->
+<section class="main__skills skills" id="skills">
+    <h2 class="skills__title">МОИ НАВЫКИ</h2>
+    <form action="/" method="POST">
+        <ul class="skills__list skills-list">
+            <li class="skills-list__skill skill">
+                <img
+                    class="skill__img"
+                    src="../static/img/python.png"
+                    alt="python"
+                    width="150"
+                    height="150"
+                />
+                <span class="skill__info">Python/Flask</span>
+                <input class="skill__button" type="submit" name="button_python" value="ПОКАЗАТЬ ПРОЕКТ">
+            </li>
+            <li class="skills-list__skill skill">
+                <img
+                    class="skill__img"
+                    src="../static/img/telegram.png"
+                    alt="telegram"
+                    width="150"
+                    height="150"
+                />
+                <span class="skill__info">Telegram Bot</span>
+                <input class="skill__button" type="submit" name="button_telegram" value="ПОКАЗАТЬ ПРОЕКТ">
+            </li>
+            <li class="skills-list__skill skill">
+                <img
+                    class="skill__img"
+                    src="../static/img/html.png"
+                    alt="html"
+                    width="150"
+                    height="150"
+                />
+                <span class="skill__info">Web разработка</span>
+                <input class="skill__button" type="submit" name="button_html" value="ПОКАЗАТЬ ПРОЕКТ">
+            </li>
+            <li class="skills-list__skill skill">
+                <img
+                    class="skill__img"
+                    src="../static/img/db.webp"
+                    alt="SQL"
+                    width="150"
+                    height="150"
+                />
+                <span class="skill__info">Базы данных</span>
+                <input class="skill__button" type="submit" name="button_db" value="ПОКАЗАТЬ ПРОЕКТ">
+            </li>
+        </ul>
+    </form>
+    
+    <!-- Блок с проектом (появляется динамически) -->
+    {% if active_project %}
+    <div class="skills__project project" id="project">
+        <div class="project__content">
+            <p class="project__description">{{ active_project.description }}</p>
+            <a class="project__link" href="{{ active_project.github_link }}" target="_blank">
+                Открыть на GitHub
+            </a>
+        </div>
+    </div>
+    {% endif %}
+</section>
+      <!-- Секция с формой обратной связи -->
+      <section class="main__feedback feedback" id="feedback">
+        <h2 class="feedback__title">ОБРАТНАЯ СВЯЗЬ</h2>
+        <form action="" method="POST" class="feedback__form form">
+          <label for="email">
+            <input type="email" class="form__input" name="email" id="email" placeholder="Введите E-mail" required>
+          </label>
+          <label for="text">
+            <textarea name="text" class="form__input" id="text" cols="70" rows="10" required placeholder="Комментарий"></textarea>
+          </label>
+          <button class="form__button" type="submit">ОТПРАВИТЬ</button>
+        </form>
+      </section>
+    </main>
+    <!-- Подвал для ссылок на соц-сети -->
+    <footer>
+
+    </footer>
+  </body>
+</html>
